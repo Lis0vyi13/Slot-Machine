@@ -119,6 +119,9 @@ button[type="submit"]:hover {
   top: 0;
   cursor: pointer;
 }
+#balance {
+  margin-bottom: 20px;
+}
 @media (min-width: 1px) {
   .container {
     width: 100%;
@@ -127,11 +130,9 @@ button[type="submit"]:hover {
     border: 5px solid transparent;
     display: flex;
     height: 400px;
-    width: 80%;
     margin: 0px auto;
   }
   .form {
-    width: 80%;
     margin: 0 auto;
     padding: 0 9px;
     font-size: 18px;
@@ -244,16 +245,10 @@ button[type="submit"]:hover {
   }
 }
 @media (min-width: 768px) {
-  .slot-table,
-  .form {
-    width: 700px;
-  }
   img {
     width: 140px;
   }
-  .inputs {
-    flex-direction: row;
-  }
+
   .form,
   button[type="submit"],
   .form input,
@@ -268,7 +263,10 @@ button[type="submit"]:hover {
 @media (min-width: 992px) {
   .slot-table,
   .form {
-    width: 900px;
+    width: 100%;
+  }
+  .inputs {
+    flex-direction: row;
   }
 }
 
