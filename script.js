@@ -49,16 +49,23 @@ function spin() {
 }
 
 function getValues() {
-  const betMoney = valueBetInput.value * rowAmountInput.value;
+  if (rowAmountInput.value > 0 && rowAmountInput.value < 4) {
+    const betMoney = valueBetInput.value * rowAmountInput.value;
 
-  if (parseInt(balance.textContent) < betMoney) {
-    modal.classList.toggle("show");
-    return false;
+    if (parseInt(balance.textContent) < betMoney) {
+      document.querySelector(".modal p").textContent = "Fail! You dont have enough money!";
+      modal.classList.toggle("show");
+      return false;
+    }
+    return true;
   }
-  return true;
-}
+  document.querySelector(".modal p").textContent = "Enter value (1-3)";
+  modal.classList.toggle("show");
 
-function compareCells([...arr], times = 0) {
+  return false;
+}
+let times = 0;
+function compareCells([...arr]) {
   if (arr.length < 7) return times;
   let count = 0;
 
@@ -74,11 +81,26 @@ const game = () => {
   const betMoney = valueBetInput.value * rowAmountInput.value;
   return function updateBalance() {
     const result = compareCells(slotItems);
+
     if (result === 0) {
       balanceValue -= betMoney;
-    } else {
-      balanceValue += betMoney;
+      balance.innerHTML = balanceValue + "$";
+      return;
     }
+
+    if (rowAmountInput.value > result) {
+      if (rowAmountInput.value - result === 2) {
+        balanceValue -= valueBetInput.value;
+      }
+      if (rowAmountInput.value - result === 1) {
+        balance.innerHTML = balanceValue + "$";
+        return;
+      }
+      balance.innerHTML = balanceValue + "$";
+      return;
+    }
+
+    balanceValue += betMoney;
     balance.innerHTML = balanceValue + "$";
   };
 };
