@@ -17,7 +17,7 @@ const apple = '<img src="icons/apple.png" alt="#">';
 const lemon = '<img src="icons/lemon.png" alt="#">';
 const watermelon = '<img src="icons/watermelon.png" alt="#">';
 
-const iconsArr = [seven, crown, cherry, plum, grape, diamond, apple, lemon, watermelon];
+const iconsArr = [seven, crown, cherry];
 
 // modal
 modal.addEventListener("click", function (e) {
@@ -28,7 +28,7 @@ modal.addEventListener("click", function (e) {
 
 function changeCellsIcons() {
   slotItems.forEach(function (item) {
-    let randomValue = Math.floor(Math.random() * slotItems.length);
+    let randomValue = Math.floor(Math.random() * iconsArr.length);
     item.innerHTML = iconsArr[randomValue];
     item.setAttribute("data", randomValue);
   });
@@ -80,6 +80,7 @@ const game = () => {
   let balanceValue = parseInt(balance.textContent);
   const betMoney = valueBetInput.value * rowAmountInput.value;
   return function updateBalance() {
+    times = 0;
     const result = compareCells(slotItems);
 
     if (result === 0) {
