@@ -10,12 +10,6 @@ const modalCloseButton = document.querySelector(".modal__close");
 const seven = '<img src="icons/7.png" alt="#">';
 const crown = '<img src="icons/crown.png" alt="#">';
 const cherry = '<img src="icons/cherry.png" alt="#">';
-const plum = '<img src="icons/plum.png" alt="#">';
-const grape = '<img src="icons/grape.png" alt="#">';
-const diamond = '<img src="icons/diamond.png" alt="#">';
-const apple = '<img src="icons/apple.png" alt="#">';
-const lemon = '<img src="icons/lemon.png" alt="#">';
-const watermelon = '<img src="icons/watermelon.png" alt="#">';
 
 const iconsArr = [seven, crown, cherry];
 
