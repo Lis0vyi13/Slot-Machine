@@ -6,6 +6,7 @@ const valueBetInput = document.querySelector("#bet-value");
 const rowAmountInput = document.querySelector("#row-amount");
 const modal = document.querySelector(".modal");
 const modalCloseButton = document.querySelector(".modal__close");
+const info = document.querySelector("#info");
 // icons
 const seven = '<img src="icons/7.png" alt="#">';
 const crown = '<img src="icons/crown.png" alt="#">';
@@ -79,23 +80,39 @@ const game = () => {
 
     if (result === 0) {
       balanceValue -= betMoney;
+      info.innerHTML = `You lose: ${betMoney}$`;
+      if (info.classList.contains("hidden")) info.classList.remove("hidden");
+      info.style.color = "red";
       balance.innerHTML = balanceValue + "$";
       return;
     }
 
     if (rowAmountInput.value > result) {
       if (rowAmountInput.value - result === 2) {
+        const oldValue = balanceValue;
         balanceValue -= valueBetInput.value;
+        info.innerHTML = `You lose: ${oldValue - balanceValue}$`;
+        if (info.classList.contains("hidden")) info.classList.remove("hidden");
+        info.style.color = "red";
       }
       if (rowAmountInput.value - result === 1) {
         balance.innerHTML = balanceValue + "$";
+        info.innerHTML = `You won: 0$`;
+        if (info.classList.contains("hidden")) info.classList.remove("hidden");
+        info.style.color = "green";
         return;
       }
       balance.innerHTML = balanceValue + "$";
+      info.innerHTML = `You won: 0$`;
+      if (info.classList.contains("hidden")) info.classList.remove("hidden");
+      info.style.color = "green";
       return;
     }
 
     balanceValue += betMoney;
+    info.innerHTML = `You won: ${betMoney}$`;
+    if (info.classList.contains("hidden")) info.classList.remove("hidden");
+    info.style.color = "green";
     balance.innerHTML = balanceValue + "$";
   };
 };
